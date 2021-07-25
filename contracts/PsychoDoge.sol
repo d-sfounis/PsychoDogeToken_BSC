@@ -912,9 +912,9 @@ contract PsychoDoge is Context, IERC20, Ownable {
     constructor(address param_addr, address opt_multiSig) {
         _rOwned[_msgSender()] = _rTotal;
 
-        //IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x10ED43C718714eb63d5aA57B78B54704E256024E); //PancakeSwap's V2 Router.
+        IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x10ED43C718714eb63d5aA57B78B54704E256024E); //PancakeSwap's V2 Router.
                                                                                                               //NOTE: You HAVE to use Pancake's V2 Router, otherwise taxOnTransfer don't work.
-        IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3); //Pancakeswap testnet
+        //IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3); //Pancakeswap testnet
         //Create a new uniswap pair for this new token and set the local pair pointer
         PsychoUniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory()).createPair(address(this), _uniswapV2Router.WETH());
 
