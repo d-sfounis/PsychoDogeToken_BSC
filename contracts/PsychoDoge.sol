@@ -1141,7 +1141,7 @@ contract PsychoDoge is Context, IERC20, Ownable {
         _isExcludedFromTxLimit[account] = isExcluded;
     }
     
-    function isExcludedFromTXLimit(address account) public view {
+    function isExcludedFromTXLimit(address account) public view returns (bool) {
         return _isExcludedFromTxLimit[account];
     }
     
