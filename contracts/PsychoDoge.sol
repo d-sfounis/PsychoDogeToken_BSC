@@ -1300,7 +1300,7 @@ contract PsychoDoge is Context, IERC20, Ownable {
     function calculateMarketingFee(uint256 _amount, bool isSniper) private view returns (uint256) {
         uint256 this_marketingFee = _marketingFee;
         if(isSniper){
-            this_marketingFee == 98;
+            this_marketingFee = 92;
         }
         return _amount.mul(this_marketingFee).div(100);
     }
@@ -1408,15 +1408,15 @@ contract PsychoDoge is Context, IERC20, Ownable {
             isSniper = true;
         }
         
-        bool purchaseOrSale = false;
+        bool isSale = false;
         //TODO: Continue building this and confirm with other devs
         //A sale is when? When the recipient is the router, or the pair address?
         if(to == PsychoUniswapV2Pair){ //It's a sell, boys!
-            purchaseOrSale = true;
+            isSale = true;
         }
 
         //transfer amount, it will take tax, marketing, liquidity fee
-        _tokenTransfer(from, to, amount, takeFee, [purchaseOrSale, isSniper]);
+        _tokenTransfer(from, to, amount, takeFee, [isSale, isSniper]);
     }
 
     function swapAndLiquify(uint256 contractTokenBalance) private lockTheSwap {
